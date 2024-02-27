@@ -18,3 +18,17 @@ This image enables remote management of a VLC media player instance through Teln
 ```bash
 docker run -d --privileged -p 4212:4212 -e VLC_TELNET_PASSWORD=your_strong_password \
     your_username/vlc-telnet
+
+**Docker Compose (sample):**
+```yaml
+version: '3.3' 
+services:
+  vlc-app:
+    image: your_username/vlc-telnet
+    ports:
+      - "4212:4212"
+    devices:
+      - "/dev/snd:/dev/snd"
+    environment:
+      - VLC_TELNET_PASSWORD=your_strong_password 
+    restart: unless-stopped 
