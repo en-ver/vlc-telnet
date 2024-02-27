@@ -40,5 +40,5 @@ For production environments, consider using a secrets management solution for ha
 This image is provided as-is, and I offer no guarantee of its suitability for any specific purpose.
 
 Project Link:
-[https://github.com/en-ver/vlc-telnet]
-[https://github.com/en-ver/vlc-telnet]
+https://github.com/en-ver/vlc-telnet
+https://github.com/en-ver/vlc-telnet
