@@ -6,10 +6,9 @@ A Docker image of VLC with a Telnet interface for remote control, ideal for use 
 
 This image enables remote management of a VLC media player instance through Telnet. Key features and considerations:
 
-* **Telnet Password:** Customizable via the `VLC_TELNET_PASSWORD` environment variable in your docker-compose file.
-* **USB Sound Speakers:** Designed specifically for use with USB sound speakers.
-* **Device Selection:** If multiple USB speakers are present, the behavior is undefined.  It's recommended to use only one USB speaker with this image.
-* **Privileged Mode:** Requires privileged mode for access to USB audio devices. 
+* Telnet Password: Customizable via the `VLC_TELNET_PASSWORD` environment variable in your docker-compose file.
+* USB Sound Speakers: Designed specifically for use with USB sound speakers.
+* Device Selection: If multiple USB speakers are present, the behavior is undefined.  It's recommended to use only one USB speaker with this image.
 
 ## How to Use
 
