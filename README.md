@@ -1,6 +1,6 @@
 # vlc-telnet
 
-**Short Description:** A Docker image of VLC with a Telnet interface for remote control, ideal for use with Home Assistant's VLC Telnet integration.
+A Docker image of VLC with a Telnet interface for remote control, ideal for use with Home Assistant's VLC Telnet integration.
 
 ## Overview
 
