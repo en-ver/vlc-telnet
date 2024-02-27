@@ -33,10 +33,10 @@ services:
       - VLC_TELNET_PASSWORD=your_strong_password 
     restart: unless-stopped 
 ```
-## Additional Notes
-This image is built for multiple architectures for broader compatibility.
-For production environments, consider using a secrets management solution for handling the Telnet password.
-**Disclaimer**
-This image is provided as-is, and I offer no guarantee of its suitability for any specific purpose.
+> [!NOTE]
+> This image is built for multiple architectures for broader compatibility.
+> This image is provided as-is, and I offer no guarantee of its suitability for any specific purpose.
 
-Project Link: https://github.com/en-ver/vlc-telnet
+Project Links:  
+https://github.com/en-ver/vlc-telnet  
+https://hub.docker.com/r/ne1ver/vlc-telnet
