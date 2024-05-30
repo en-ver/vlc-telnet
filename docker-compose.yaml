@@ -1,0 +1,10 @@
+services:
+  vlc-app:
+    image: ne1ver/vlc-telnet
+    ports:
+      - "4212:4212"
+    devices:
+      - "/dev/snd:/dev/snd"
+    environment:
+      - VLC_TELNET_PASSWORD=your_strong_password 
+    restart: unless-stopped 
