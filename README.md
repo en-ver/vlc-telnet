@@ -20,7 +20,6 @@ docker run -d --privileged -p 4212:4212 -e VLC_TELNET_PASSWORD=your_strong_passw
 ```
 **docker-compose.yml**
 ```yaml
-version: '3.3' 
 services:
   vlc-app:
     image: ne1ver/vlc-telnet
