@@ -13,6 +13,7 @@ This image enables remote management of a VLC media player instance through Teln
 ## How to Use
 
 **Docker Run**
+
 Run the command below if you don't use docker compose
 ```bash
 docker run -d --privileged -p 4212:4212 -e VLC_TELNET_PASSWORD=your_strong_password \
