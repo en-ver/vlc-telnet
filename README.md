@@ -19,7 +19,7 @@ Run the command below if you don't use docker compose.
 docker run -d --privileged -p 4212:4212 -e VLC_TELNET_PASSWORD=your_strong_password \
     ne1ver/vlc-telnet
 ```
-To deploy it with docker compose use the sample below
+To deploy it with docker compose use the sample below:
 **docker-compose.yml**
 ```yaml
 services:
