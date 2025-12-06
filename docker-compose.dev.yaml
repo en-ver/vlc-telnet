@@ -1,11 +1,13 @@
 services:
   vlc-app:
-    image: ne1ver/vlc-telnet
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "4212:4212"
     devices:
       - "/dev/snd:/dev/snd"
     environment:
       VLC_TELNET_PASSWORD: ${VLC_TELNET_PASSWORD}
-      ALSA_DEVICE: ${ALSA_DEVICE} 
+      ALSA_DEVICE: ${ALSA_DEVICE}
     restart: unless-stopped 
