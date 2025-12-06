@@ -88,15 +88,15 @@ Or add through the UI:
 | Variable              | Required | Default       | Description                                                                     |
 | --------------------- | -------- | ------------- | ------------------------------------------------------------------------------- |
 | `VLC_TELNET_PASSWORD` | Yes      | None          | Password for Telnet access (use a strong password)                              |
-| `ALSA_DEVICE`         | No       | Auto-detected | Keywords from `/proc/asound/cards` to identify your audio device. Examples: `J710`, `Jabra`, `USB`. Auto-detects USB audio if not set |
+| `ALSA_DEVICE`         | No       | Auto-detected | Keywords to search for in `aplay -l` output. Examples: `J710`, `Jabra`, `USB Audio`. Defaults to "USB Audio" if not set |
 
 ## USB Speaker Configuration
 
-**Important**: Use keywords from `/proc/asound/cards` to uniquely identify your audio device.
+**Important**: Use keywords from `/proc/asound/cards` (host command) to identify your audio device. The container will use these keywords to search `aplay -l` output internally.
 
 ### Finding Your USB Audio Device
 
-1. **List available audio cards:**
+1. **List available audio cards on the host machine:**
 
    ```bash
    cat /proc/asound/cards
@@ -111,24 +111,30 @@ Or add through the UI:
    2 [Generic        ]: HDA-Intel - HD-Audio Generic
    ```
 
-3. **Set the ALSA_DEVICE variable in your .env file with unique keywords:**
+3. **Set the ALSA_DEVICE variable in your .env file with keywords from the card name:**
    ```
    VLC_TELNET_PASSWORD=your_secure_password_here
    ALSA_DEVICE=J710
    ```
 
 **Alternative keywords for the same device:**
-- `J710` (recommended - unique identifier)
+- `J710` (card identifier - recommended)
 - `Jabra` (device brand)
 - `Speak` (device model)
-- `USB` (device type)
+- `USB Audio` (device description - default)
+
+### How It Works
+
+- **You**: Use `cat /proc/asound/cards` on host to find keywords
+- **Container**: Uses those keywords to search `aplay -l` output internally
+- **Result**: Finds the matching device and uses `hw:X,Y` format for VLC
 
 ### Auto-Detection
 
 If `ALSA_DEVICE` is not specified, the container will:
 
-1. Search `/proc/asound/cards` for cards containing "USB"
-2. Use the first found USB audio card
+1. Search `aplay -l` output for devices containing "USB Audio"
+2. Use the first matching device
 3. Apply the format `hw:X,Y` automatically
 
 **Note**: Using unique keywords (like `J710`) is more reliable than generic terms (`USB`) when multiple audio devices are present.
@@ -172,7 +178,7 @@ This image supports multiple architectures:
 
 If audio stops working after restart:
 
-1. Check available cards: `cat /proc/asound/cards`
+1. Check available cards on host: `cat /proc/asound/cards`
 2. Update the `ALSA_DEVICE` in your .env file with the correct keywords for your device
 
 ## Example Home Assistant Automations
