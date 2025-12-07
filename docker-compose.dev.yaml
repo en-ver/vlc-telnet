@@ -21,9 +21,3 @@ services:
       VLC_TELNET_PASSWORD: ${VLC_TELNET_PASSWORD}
       ALSA_DEVICE: ${ALSA_DEVICE:-USB Audio}
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:4212/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
