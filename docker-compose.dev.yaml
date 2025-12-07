@@ -1,6 +1,17 @@
 services:
   vlc-telnet:
-    image: ne1ver/vlc-telnet:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/386
+        - linux/amd64
+        - linux/arm/v7
+        - linux/arm64
+      cache_from:
+        - ne1ver/vlc-telnet:latest
+      args:
+        BUILDKIT_INLINE_CACHE: 1
     container_name: vlc-telnet
     ports:
       - "4212:4212"
